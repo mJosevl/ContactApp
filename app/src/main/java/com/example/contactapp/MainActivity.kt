@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -24,6 +25,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contactapp.R.layout.activity_main
 import com.example.contactapp.adapter.ContactosAdapter
 import com.example.contactapp.adapter.OnContactActionListener
 import com.example.contactapp.database.ContactosDatabase
@@ -35,6 +37,7 @@ import com.example.contactapp.viewmodel.ContactosViewModel
 import com.example.contactapp.viewmodel.ContactosViewModelFactory
 import com.example.contactapp.viewmodel.EstadoImportacion
 import com.google.android.material.snackbar.Snackbar
+
 
 
 /**
@@ -133,7 +136,7 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        val mainContainer = findViewById<View>(R.id.activity_main) // Obtén tu contenedor principal
+        val mainContainer = findViewById<View>(activity_main) // Obtén tu contenedor principal
 
         ViewCompat.setOnApplyWindowInsetsListener(mainContainer) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
