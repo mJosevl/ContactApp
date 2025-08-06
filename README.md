@@ -4,7 +4,7 @@
 
 
 ### Lo que pasó realmente:
-- ⏰ **Tiempo asignado**: 1 día  hora
+- ⏰ **Tiempo asignado**: 1 día  
 - ⏱️ **Tiempo real**: 4 días completos
 - 💥 **Problema**: El proyecto original se crasheó y se perdió
 - ✅ **Resultado**: Una aplicación completamente "funcional"
