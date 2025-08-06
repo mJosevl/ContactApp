@@ -1,5 +1,6 @@
 package com.example.contactapp
 
+import com.example.contactapp.databinding.ActivityMainBinding
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.contactapp.adapter.ContactosAdapter
 import com.example.contactapp.adapter.OnContactActionListener
 import com.example.contactapp.database.ContactosDatabase
-import com.example.contactapp.databinding.ActivityMainBinding
 import com.example.contactapp.model.Contacto
 import com.example.contactapp.repository.ContactosRepository
 import com.example.contactapp.utils.BackupUtils
