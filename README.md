@@ -1,14 +1,7 @@
 # Contactapp 📞
 
-> **Nota importante**: Este proyecto es una copia/adaptación de un trabajo original que se crasheó. Aunque tenía solo 1 hora para completarlo, terminé dedicándole 4 días enteros para hacerlo funcionar correctamente. La verdad es que el proyecto original se perdió, pero aquí está mi versión funcional.
 
----
 
-## 🚨 Historia Real del Proyecto
-
-Este proyecto nació de una situación complicada: tenía que entregar una aplicación de contactos en **1 hora**, pero el proyecto original se **crasheó completamente** y se perdió todo el código. 
-
-En lugar de rendirme, decidí recrear la aplicación desde cero. Lo que empezó como una tarea de 1 hora se convirtió en 4 días de trabajo intenso, pero al final logré crear una aplicación funcional y robusta.
 
 ### Lo que pasó realmente:
 - ⏰ **Tiempo asignado**: 1 día  hora
@@ -33,9 +26,9 @@ Para poner en marcha esta aplicación en tu dispositivo o emulador:
 
 Aunque el proyecto original se perdió, esta experiencia me enseñó mucho sobre:
 
-- **Perseverancia**: A veces las cosas no salen como planeas, pero hay que seguir adelante
+- **Perseverancia**: A veces las cosas no salen como planeas, pero hay que seguir adelante con lloración y todo 
 - **Arquitectura Android**: Implementé una arquitectura MVVM sólida con Room Database
-- **Gestión de crisis**: Cómo manejar cuando todo sale mal y tienes que empezar de nuevo
+- **Gestión de crisis**: Cómo manejar cuando todo sale mal y tienes que empezar de nuevo, lo bueno es que hay harto repo pa copiar , aun asi eso no asgura que funcione 
 
 ---
 
@@ -83,11 +76,11 @@ Fui más allá de los requisitos básicos para crear una experiencia completa:
 - ❌ Perdí todo el código inicial
 - ❌ No cumplí con el tiempo 
 ### Lo que sí funcionó:
-- ✅ Recreé la aplicación desde cero
-- ✅ Implementé todas las funcionalidades requeridas
+- ✅ Recreé la aplicación desde cero, copiandola como todos 
+- ✅ Implementé todas las funcionalidades requeridas, bueno casi 
 - ✅ Añadí características adicionales
-- ✅ Creé una aplicación estable y funcional
-- ✅ Aprendí mucho en el proceso
+- ✅ Creé una aplicación estable y "funcional"
+- ✅ Aprendí mucho en el proceso y a dar mas dias de lo esperado 
 
 ---
 
