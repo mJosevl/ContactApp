@@ -1,0 +1,19 @@
+# Android
+.gradle/
+.idea/
+build/
+app/build/
+local.properties
+*.iml
+*.log
+*.apk
+*.aab
+
+# Gradle
+.gradle
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Otros
+.DS_Store
+*.swp
