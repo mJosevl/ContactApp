@@ -36,6 +36,25 @@
                 android:textSize="24sp"
                 android:gravity="center"
                 android:padding="16dp"/>
+            
+            <!-- EditText para búsqueda -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Buscar contactos..."
+                app:startIconDrawable="@drawable/ic_search"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextBusqueda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
@@ -56,7 +75,7 @@
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabAgregarContacto"
+                android:id="@+id/fabAgregar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
