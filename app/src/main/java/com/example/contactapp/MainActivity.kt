@@ -1,6 +1,7 @@
 package com.example.contactapp
 
-import com.example.contactapp.databinding.ActivityMainBinding
+import com.example.contactapp.model.Contacto
+// import com.example.contactapp.databinding.ActivityMainBinding
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -25,11 +26,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.contactapp.R.layout.activity_main
+import com.example.contactapp.R
 import com.example.contactapp.adapter.ContactosAdapter
 import com.example.contactapp.adapter.OnContactActionListener
 import com.example.contactapp.database.ContactosDatabase
-import com.example.contactapp.model.Contacto
 import com.example.contactapp.repository.ContactosRepository
 import com.example.contactapp.utils.BackupUtils
 import com.example.contactapp.utils.VCardUtils
@@ -45,7 +45,7 @@ import com.google.android.material.snackbar.Snackbar
  */
 class MainActivity : AppCompatActivity(), OnContactActionListener {
 
-    private lateinit var binding: ActivityMainBinding
+    // private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ContactosAdapter
 
     private val viewModel: ContactosViewModel by viewModels {
@@ -128,17 +128,16 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
             }
         }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        setContentView(R.layout.activity_main)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        val mainContainer = findViewById<View>(activity_main) // Obtén tu contenedor principal
-
-        ViewCompat.setOnApplyWindowInsetsListener(mainContainer) { view, windowInsets ->
+        // Usar el contenedor raíz como vista principal
+        val rootView = findViewById<View>(android.R.id.content)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
 
             // Aplica padding a tu contenedor principal para evitar las barras del sistema
@@ -157,20 +156,20 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
         viewModel.estadoImportacion.observe(this) { estado ->
             when (estado) {
                 EstadoImportacion.CARGANDO -> {
-                    binding.progressBar.visibility = View.VISIBLE
+                    findViewById<android.widget.ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
                 }
                 EstadoImportacion.EXITO -> {
-                    binding.progressBar.visibility = View.GONE
+                    findViewById<android.widget.ProgressBar>(R.id.progressBar).visibility = View.GONE
                     Toast.makeText(this, "Contactos importados.", Toast.LENGTH_SHORT).show()
                     viewModel.resetearEstadoImportacion()
                 }
                 EstadoImportacion.ERROR -> {
-                    binding.progressBar.visibility = View.GONE
+                    findViewById<android.widget.ProgressBar>(R.id.progressBar).visibility = View.GONE
                     Toast.makeText(this, "Error al importar.", Toast.LENGTH_SHORT).show()
                     viewModel.resetearEstadoImportacion()
                 }
                 else -> { // VACIO
-                    binding.progressBar.visibility = View.GONE
+                    findViewById<android.widget.ProgressBar>(R.id.progressBar).visibility = View.GONE
                 }
             }
         }
@@ -192,8 +191,9 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
             startActivity(intent)
         }*/
         adapter = ContactosAdapter(this)
-        binding.recyclerViewContactos.layoutManager = LinearLayoutManager(this)
-        binding.recyclerViewContactos.adapter = adapter
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewContactos)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 
         // Configura el helper para el gesto de "swipe-to-delete"
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -207,14 +207,15 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
                 viewModel.eliminarContacto(contactoEliminado)
 
                 // Muestra un Snackbar con opción de deshacer
-                Snackbar.make(binding.root, "Contacto eliminado", Snackbar.LENGTH_LONG).show()
+                val rootView = findViewById<View>(android.R.id.content)
+                Snackbar.make(rootView, "Contacto eliminado", Snackbar.LENGTH_LONG).show()
                     /*.setAction("DESHACER") {
                         // Si el usuario deshace, volvemos a insertar el contacto.
                         // Esta funcionalidad requeriría un método en el ViewModel.
                     }*/
             }
         }
-        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.recyclerViewContactos)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView)
     }
 
     // Implementación de los métodos de la interfaz
@@ -282,11 +283,13 @@ class MainActivity : AppCompatActivity(), OnContactActionListener {
      * Configura los listeners para la búsqueda y el botón de agregar.
      */
     private fun setupListeners() {
-        binding.editTextBusqueda.addTextChangedListener { text ->
+        val editTextBusqueda = findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.editTextBusqueda)
+        editTextBusqueda.addTextChangedListener { text: android.text.Editable? ->
             viewModel.buscarContacto(text.toString())
         }
 
-        binding.fabAgregar.setOnClickListener {
+        val fabAgregar = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fabAgregar)
+        fabAgregar.setOnClickListener {
             startActivity(Intent(this, AgregarContactoActivity::class.java))
         }
     }
